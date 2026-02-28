@@ -25,18 +25,24 @@ Features:
    npm run build
    ```
 
-3. Run unit tests:
+3. Lint the project:
+
+   ```bash
+   npm run lint
+   ```
+
+4. Run unit tests:
 
    ```bash
    npm run test:run
    ```
 
-4. Generate coverage:
+5. Generate coverage:
 
    ```bash
    npm run test:coverage
    ```
 
-5. Open Chrome and go to `chrome://extensions`.
-6. Enable **Developer mode**.
-7. Click **Load unpacked** and select `.output/chrome-mv3`.
+6. Open Chrome and go to `chrome://extensions`.
+7. Enable **Developer mode**.
+8. Click **Load unpacked** and select `.output/chrome-mv3`.
