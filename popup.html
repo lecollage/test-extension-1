@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Popup Counter</title>
+    <script type="module" src="/src/popup.ts"></script>
+  </head>
+  <body>
+    <main class="popup">
+      <header class="popup__header">
+        <p class="popup__eyebrow">Chrome Extension</p>
+        <h1 class="popup__title">Time Popup Counter</h1>
+      </header>
+
+      <section class="card">
+        <p class="card__label">Popup open count</p>
+        <p class="card__value" id="open-count-summary">0</p>
+        <button class="popup__button" id="open-modal-button" type="button">
+          Open time details
+        </button>
+      </section>
+
+      <div class="modal is-hidden" id="details-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal__backdrop" id="close-modal-backdrop"></div>
+        <section class="modal__panel">
+          <header class="modal__header">
+            <h2 class="modal__title" id="modal-title">Time details</h2>
+            <button class="modal__close" id="close-modal-button" type="button" aria-label="Close modal">
+              ×
+            </button>
+          </header>
+
+          <section class="card">
+            <p class="card__label">Current time</p>
+            <p class="card__value" id="current-time">--:--:--</p>
+          </section>
+
+          <section class="card">
+            <p class="card__label">Popup opened at</p>
+            <p class="card__value" id="opened-at">--:--:--</p>
+          </section>
+
+          <section class="card">
+            <p class="card__label">Popup open count</p>
+            <p class="card__value" id="open-count-modal">0</p>
+          </section>
+        </section>
+      </div>
+    </main>
+  </body>
+  </html>
