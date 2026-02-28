@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 ./.husky/pre-commit-dummy.sh
+./.husky/pre-commit-prettier.sh
 npm run lint:staged
 ./.husky/pre-commit-related-tests.sh

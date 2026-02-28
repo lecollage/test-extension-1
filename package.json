@@ -8,6 +8,7 @@
     "build": "wxt build",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
+    "format:staged": "prettier --write",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
     "lint": "eslint .",
@@ -21,11 +22,7 @@
     "postinstall": "wxt prepare"
   },
   "lint-staged": {
-    "*.{js,cjs,mjs,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{css,html,json,md,yaml,yml}": "prettier --write"
+    "*.{js,cjs,mjs,ts,tsx}": "eslint --fix"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
