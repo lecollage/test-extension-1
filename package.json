@@ -6,11 +6,16 @@
   "scripts": {
     "dev": "wxt",
     "build": "wxt build",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "zip": "wxt zip",
     "postinstall": "wxt prepare"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^3.2.4",
     "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
     "wxt": "^0.20.6"
   }
 }

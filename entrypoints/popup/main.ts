@@ -1,6 +1,13 @@
 import './style.css';
 import { browser } from 'wxt/browser';
 
+import {
+  formatCountValue,
+  formatPopupTime,
+  getNextOpenCount,
+  shouldCloseModalForKey
+} from '../../lib/popup';
+
 const COUNTER_KEY = 'popupOpenCount';
 
 const currentTimeElement = document.querySelector<HTMLParagraphElement>('#current-time');
@@ -30,11 +37,7 @@ const closeModalButtonNode = ensureElement(closeModalButtonElement, 'close-modal
 const closeModalBackdropNode = ensureElement(closeModalBackdropElement, 'close-modal-backdrop');
 
 function formatTime(date: Date): string {
-  return new Intl.DateTimeFormat(undefined, {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  }).format(date);
+  return formatPopupTime(date);
 }
 
 function renderCurrentTime(): void {
@@ -42,7 +45,7 @@ function renderCurrentTime(): void {
 }
 
 function setOpenCount(count: number): void {
-  const value = String(count);
+  const value = formatCountValue(count);
   openCountSummaryNode.textContent = value;
   openCountModalNode.textContent = value;
 }
@@ -57,8 +60,7 @@ function closeModal(): void {
 
 async function incrementOpenCount(): Promise<void> {
   const result = await browser.storage.local.get(COUNTER_KEY);
-  const currentCount = typeof result[COUNTER_KEY] === 'number' ? result[COUNTER_KEY] : 0;
-  const nextCount = currentCount + 1;
+  const nextCount = getNextOpenCount(result[COUNTER_KEY]);
 
   await browser.storage.local.set({ [COUNTER_KEY]: nextCount });
   setOpenCount(nextCount);
@@ -75,7 +77,7 @@ async function initPopup(): Promise<void> {
   closeModalButtonNode.addEventListener('click', closeModal);
   closeModalBackdropNode.addEventListener('click', closeModal);
   window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
+    if (shouldCloseModalForKey(event.key)) {
       closeModal();
     }
   });

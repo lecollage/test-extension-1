@@ -1,15 +1,18 @@
 import { browser } from 'wxt/browser';
 
+import { getChangedCounterValue, getStoredCounterValue } from '../lib/background';
+import { badgeTextForCount } from '../lib/extension-state';
+
 const COUNTER_KEY = 'popupOpenCount';
 
 async function getCounter(): Promise<number> {
   const result = await browser.storage.local.get(COUNTER_KEY);
-  return typeof result[COUNTER_KEY] === 'number' ? result[COUNTER_KEY] : 0;
+  return getStoredCounterValue(result[COUNTER_KEY]);
 }
 
 async function updateBadge(count?: number): Promise<void> {
   const nextCount = count ?? (await getCounter());
-  const badgeText = nextCount > 0 ? String(nextCount) : '';
+  const badgeText = badgeTextForCount(nextCount);
 
   await browser.action.setBadgeBackgroundColor({ color: '#10233f' });
   await browser.action.setBadgeText({ text: badgeText });
@@ -31,12 +34,8 @@ export default defineBackground({
     });
 
     browser.storage.onChanged.addListener((changes, areaName) => {
-      if (areaName !== 'local' || !changes[COUNTER_KEY]) {
-        return;
-      }
-
-      const newValue = changes[COUNTER_KEY].newValue;
-      if (typeof newValue === 'number') {
+      const newValue = getChangedCounterValue(changes, areaName, COUNTER_KEY);
+      if (newValue !== null) {
         void updateBadge(newValue);
       }
     });
