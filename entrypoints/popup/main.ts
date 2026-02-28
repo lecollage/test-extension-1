@@ -1,4 +1,5 @@
 import './style.css';
+import { browser } from 'wxt/browser';
 
 const COUNTER_KEY = 'popupOpenCount';
 
@@ -55,11 +56,11 @@ function closeModal(): void {
 }
 
 async function incrementOpenCount(): Promise<void> {
-  const result = await chrome.storage.local.get(COUNTER_KEY);
+  const result = await browser.storage.local.get(COUNTER_KEY);
   const currentCount = typeof result[COUNTER_KEY] === 'number' ? result[COUNTER_KEY] : 0;
   const nextCount = currentCount + 1;
 
-  await chrome.storage.local.set({ [COUNTER_KEY]: nextCount });
+  await browser.storage.local.set({ [COUNTER_KEY]: nextCount });
   setOpenCount(nextCount);
 }
 

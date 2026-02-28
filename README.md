@@ -1,6 +1,6 @@
-# Chrome Extension Example (TypeScript + Vite)
+# Chrome Extension Example (TypeScript + WXT)
 
-This project is a minimal Google Chrome extension built with TypeScript and Vite.
+This project is a minimal Chrome extension built with TypeScript and WXT.
 
 Features:
 
@@ -27,4 +27,4 @@ Features:
 
 3. Open Chrome and go to `chrome://extensions`.
 4. Enable **Developer mode**.
-5. Click **Load unpacked** and select the `dist` folder.
+5. Click **Load unpacked** and select `.output/chrome-mv3`.
