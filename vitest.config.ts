@@ -8,12 +8,13 @@ export default defineConfig({
       enabled: false,
       provider: 'v8',
       all: true,
-      reporter: ['text', 'html'],
+      reporter: ['text', 'html', 'json-summary', 'lcov'],
       thresholds: {
         lines: 90,
         functions: 90,
         branches: 90,
-        statements: 90
+        statements: 90,
+        perFile: true
       },
       include: ['lib/**/*.ts'],
       exclude: ['lib/**/*.test.ts']
