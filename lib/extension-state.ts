@@ -1,5 +1,5 @@
 export function readStoredCount(value: unknown): number {
-  return typeof value === 'number' ? value : 0;
+  return typeof value === "number" ? value : 0;
 }
 
 export function incrementCount(currentCount: number): number {
@@ -7,5 +7,5 @@ export function incrementCount(currentCount: number): number {
 }
 
 export function badgeTextForCount(count: number): string {
-  return count > 0 ? String(count) : '';
+  return count > 0 ? String(count) : "";
 }

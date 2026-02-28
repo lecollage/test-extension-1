@@ -1,23 +1,33 @@
-import './style.css';
-import { browser } from 'wxt/browser';
+import "./style.css";
+import { browser } from "wxt/browser";
 
 import {
   formatCountValue,
   formatPopupTime,
   getNextOpenCount,
-  shouldCloseModalForKey
-} from '../../lib/popup';
+  shouldCloseModalForKey,
+} from "../../lib/popup";
 
-const COUNTER_KEY = 'popupOpenCount';
+const COUNTER_KEY = "popupOpenCount";
 
-const currentTimeElement = document.querySelector<HTMLParagraphElement>('#current-time');
-const openedAtElement = document.querySelector<HTMLParagraphElement>('#opened-at');
-const openCountSummaryElement = document.querySelector<HTMLParagraphElement>('#open-count-summary');
-const openCountModalElement = document.querySelector<HTMLParagraphElement>('#open-count-modal');
-const modalElement = document.querySelector<HTMLDivElement>('#details-modal');
-const openModalButtonElement = document.querySelector<HTMLButtonElement>('#open-modal-button');
-const closeModalButtonElement = document.querySelector<HTMLButtonElement>('#close-modal-button');
-const closeModalBackdropElement = document.querySelector<HTMLDivElement>('#close-modal-backdrop');
+const currentTimeElement =
+  document.querySelector<HTMLParagraphElement>("#current-time");
+const openedAtElement =
+  document.querySelector<HTMLParagraphElement>("#opened-at");
+const openCountSummaryElement = document.querySelector<HTMLParagraphElement>(
+  "#open-count-summary",
+);
+const openCountModalElement =
+  document.querySelector<HTMLParagraphElement>("#open-count-modal");
+const modalElement = document.querySelector<HTMLDivElement>("#details-modal");
+const openModalButtonElement =
+  document.querySelector<HTMLButtonElement>("#open-modal-button");
+const closeModalButtonElement = document.querySelector<HTMLButtonElement>(
+  "#close-modal-button",
+);
+const closeModalBackdropElement = document.querySelector<HTMLDivElement>(
+  "#close-modal-backdrop",
+);
 
 function ensureElement<T extends Element>(element: T | null, id: string): T {
   if (!element) {
@@ -27,14 +37,29 @@ function ensureElement<T extends Element>(element: T | null, id: string): T {
   return element;
 }
 
-const currentTimeNode = ensureElement(currentTimeElement, 'current-time');
-const openedAtNode = ensureElement(openedAtElement, 'opened-at');
-const openCountSummaryNode = ensureElement(openCountSummaryElement, 'open-count-summary');
-const openCountModalNode = ensureElement(openCountModalElement, 'open-count-modal');
-const modalNode = ensureElement(modalElement, 'details-modal');
-const openModalButtonNode = ensureElement(openModalButtonElement, 'open-modal-button');
-const closeModalButtonNode = ensureElement(closeModalButtonElement, 'close-modal-button');
-const closeModalBackdropNode = ensureElement(closeModalBackdropElement, 'close-modal-backdrop');
+const currentTimeNode = ensureElement(currentTimeElement, "current-time");
+const openedAtNode = ensureElement(openedAtElement, "opened-at");
+const openCountSummaryNode = ensureElement(
+  openCountSummaryElement,
+  "open-count-summary",
+);
+const openCountModalNode = ensureElement(
+  openCountModalElement,
+  "open-count-modal",
+);
+const modalNode = ensureElement(modalElement, "details-modal");
+const openModalButtonNode = ensureElement(
+  openModalButtonElement,
+  "open-modal-button",
+);
+const closeModalButtonNode = ensureElement(
+  closeModalButtonElement,
+  "close-modal-button",
+);
+const closeModalBackdropNode = ensureElement(
+  closeModalBackdropElement,
+  "close-modal-backdrop",
+);
 
 function formatTime(date: Date): string {
   return formatPopupTime(date);
@@ -51,11 +76,11 @@ function setOpenCount(count: number): void {
 }
 
 function openModal(): void {
-  modalNode.classList.remove('is-hidden');
+  modalNode.classList.remove("is-hidden");
 }
 
 function closeModal(): void {
-  modalNode.classList.add('is-hidden');
+  modalNode.classList.add("is-hidden");
 }
 
 async function incrementOpenCount(): Promise<void> {
@@ -73,10 +98,10 @@ async function initPopup(): Promise<void> {
   renderCurrentTime();
   window.setInterval(renderCurrentTime, 1000);
 
-  openModalButtonNode.addEventListener('click', openModal);
-  closeModalButtonNode.addEventListener('click', closeModal);
-  closeModalBackdropNode.addEventListener('click', closeModal);
-  window.addEventListener('keydown', (event) => {
+  openModalButtonNode.addEventListener("click", openModal);
+  closeModalButtonNode.addEventListener("click", closeModal);
+  closeModalBackdropNode.addEventListener("click", closeModal);
+  window.addEventListener("keydown", (event) => {
     if (shouldCloseModalForKey(event.key)) {
       closeModal();
     }

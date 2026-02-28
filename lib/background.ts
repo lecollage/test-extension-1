@@ -1,4 +1,4 @@
-import { readStoredCount } from './extension-state';
+import { readStoredCount } from "./extension-state";
 
 export function getStoredCounterValue(value: unknown): number {
   return readStoredCount(value);
@@ -7,12 +7,12 @@ export function getStoredCounterValue(value: unknown): number {
 export function getChangedCounterValue(
   changes: Record<string, { newValue?: unknown }>,
   areaName: string,
-  key: string
+  key: string,
 ): number | null {
-  if (areaName !== 'local' || !changes[key]) {
+  if (areaName !== "local" || !changes[key]) {
     return null;
   }
 
   const nextValue = changes[key].newValue;
-  return typeof nextValue === 'number' ? nextValue : null;
+  return typeof nextValue === "number" ? nextValue : null;
 }

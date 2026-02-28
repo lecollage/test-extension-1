@@ -1,5 +1,5 @@
-import { incrementCount, readStoredCount } from './extension-state';
-import { formatClockTime } from './time';
+import { incrementCount, readStoredCount } from "./extension-state";
+import { formatClockTime } from "./time";
 
 export function formatPopupTime(date: Date): string {
   return formatClockTime(date);
@@ -8,7 +8,7 @@ export function formatPopupTime(date: Date): string {
 export function formatPopupTimeForLocale(
   date: Date,
   locales?: string | string[],
-  options?: Intl.DateTimeFormatOptions
+  options?: Intl.DateTimeFormatOptions,
 ): string {
   return formatClockTime(date, locales, options);
 }
@@ -22,5 +22,5 @@ export function formatCountValue(count: number): string {
 }
 
 export function shouldCloseModalForKey(key: string): boolean {
-  return key === 'Escape';
+  return key === "Escape";
 }
