@@ -7,7 +7,7 @@ type ExtensionFixtures = {
 };
 
 export const test = base.extend<ExtensionFixtures>({
-  context: async ({}, use, testInfo) => {
+  context: async (_args, use, testInfo) => {
     const extensionPath = path.resolve(process.cwd(), '.output/chrome-mv3');
     const context = await chromium.launchPersistentContext(testInfo.outputPath('user-data-dir'), {
       channel: 'chromium',
