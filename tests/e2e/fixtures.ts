@@ -12,12 +12,15 @@ type ExtensionFixtures = {
 };
 
 export const test = base.extend<ExtensionFixtures>({
-  context: async (_args, use, testInfo) => {
+  context: async ({ browserName }, use, testInfo) => {
+    console.log(browserName);
+
     const extensionPath = path.resolve(process.cwd(), ".output/chrome-mv3");
     const context = await chromium.launchPersistentContext(
       testInfo.outputPath("user-data-dir"),
       {
         channel: "chromium",
+        ignoreDefaultArgs: ["--disable-extensions"],
         args: [
           `--disable-extensions-except=${extensionPath}`,
           `--load-extension=${extensionPath}`,
