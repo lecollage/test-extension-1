@@ -31,18 +31,30 @@ Features:
    npm run lint
    ```
 
-4. Run unit tests:
+4. Install the Playwright browser for e2e tests:
+
+   ```bash
+   npx playwright install chromium
+   ```
+
+5. Run unit tests:
 
    ```bash
    npm run test:run
    ```
 
-5. Generate coverage:
+6. Generate coverage:
 
    ```bash
    npm run test:coverage
    ```
 
-6. Open Chrome and go to `chrome://extensions`.
-7. Enable **Developer mode**.
-8. Click **Load unpacked** and select `.output/chrome-mv3`.
+7. Run e2e tests:
+
+   ```bash
+   npm run test:e2e
+   ```
+
+8. Open Chrome and go to `chrome://extensions`.
+9. Enable **Developer mode**.
+10. Click **Load unpacked** and select `.output/chrome-mv3`.
