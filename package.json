@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "wxt",
     "build": "wxt build",
+    "spec:new": "node scripts/new-spec.mjs",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "format:staged": "prettier --write",

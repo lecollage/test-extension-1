@@ -11,6 +11,19 @@ Features:
   - a counter of how many times the popup has been opened
 - The same counter is also shown on the extension button badge.
 
+## Spec-Driven Development
+
+This repo includes a lightweight spec-driven workflow for non-trivial changes.
+
+- Specs live in `specs/`
+- Process guidance lives in `docs/spec-driven-development.md`
+- Engineering rules live in `docs/constitution.md`
+- Create a new spec scaffold with:
+
+  ```bash
+  npm run spec:new -- <feature-name>
+  ```
+
 ## Run locally
 
 1. Install dependencies:
