@@ -38,54 +38,60 @@ This repo includes a lightweight spec-driven workflow for non-trivial changes.
    npm run build
    ```
 
-3. Lint the project:
+3. Run the same validation steps as CI:
+
+   ```bash
+   npm run ci
+   ```
+
+4. Lint the project:
 
    ```bash
    npm run lint
    ```
 
-4. Format the project:
+5. Format the project:
 
    ```bash
    npm run format
    ```
 
-5. Check formatting in CI/local:
+6. Check formatting in CI/local:
 
    ```bash
    npm run format:check
    ```
 
-6. Install Git hooks:
+7. Install Git hooks:
 
    ```bash
    npm run prepare
    ```
 
-7. Install the Playwright browser for e2e tests:
+8. Install the Playwright browser for e2e tests:
 
    ```bash
    npx playwright install chromium
    ```
 
-8. Run unit tests:
+9. Run unit tests:
 
    ```bash
    npm run test:run
    ```
 
-9. Generate coverage:
+10. Generate coverage:
 
-   ```bash
-   npm run test:coverage
-   ```
+```bash
+npm run test:coverage
+```
 
-10. Run e2e tests:
+11. Run e2e tests:
 
 ```bash
 npm run test:e2e
 ```
 
-11. Open Chrome and go to `chrome://extensions`.
-12. Enable **Developer mode**.
-13. Click **Load unpacked** and select `.output/chrome-mv3`.
+12. Open Chrome and go to `chrome://extensions`.
+13. Enable **Developer mode**.
+14. Click **Load unpacked** and select `.output/chrome-mv3`.

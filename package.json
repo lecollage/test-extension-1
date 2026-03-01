@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "wxt",
     "build": "wxt build",
+    "ci": "npm run lint && npm run test:coverage && npm run build && npm run test:e2e",
     "spec:new": "node scripts/new-spec.mjs",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
