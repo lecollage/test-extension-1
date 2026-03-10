@@ -37,6 +37,7 @@ export default tseslint.config(
     languageOptions: {
       globals: {
         defineBackground: "readonly",
+        defineContentScript: "readonly",
       },
     },
   },

@@ -1,15 +1,15 @@
-# Chrome Extension Example (TypeScript + WXT)
+# Shopping Research Helper (TypeScript + WXT)
 
-This project is a minimal Chrome extension built with TypeScript and WXT.
+This project is a Chrome extension built with TypeScript and WXT.
 
 Features:
 
-- Clicking the extension button opens a popup.
-- The popup shows:
-  - the current time, updated every second
-  - the time when the popup was opened
-  - a counter of how many times the popup has been opened
-- The same counter is also shown on the extension button badge.
+- Save product candidates from the current page
+- Organize work in research projects
+- Group candidates by normalized product model
+- Manage candidate notes, title updates, and deletion
+- Add candidates from selected text via context menu
+- In-page prompt on detected product pages
 
 ## Spec-Driven Development
 
